@@ -1,0 +1,26 @@
+#Copyright IBM Corp. 2017. All Rights Reserved.
+#Licensed under "The MIT License (MIT)"
+product: 1.0.0
+info:
+  name: authytokenvalidate
+  title: authytokenvalidate
+  version: 1.0.0
+visibility:
+  view:
+    enabled: true
+    type: public
+    tags: []
+    orgs: []
+  subscribe:
+    enabled: true
+    type: authenticated
+    tags: []
+    orgs: []
+apis:
+  fatest2:
+    $ref: fatest2_2.yaml
+plans:
+  Default:
+    title: Default Plan
+    apis:
+      fatest2: {}

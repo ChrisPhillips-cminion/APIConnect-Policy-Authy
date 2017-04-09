@@ -1,0 +1,57 @@
+#Copyright IBM Corp. 2017. All Rights Reserved.
+#Licensed under "The MIT License (MIT)"
+#      Licensed Materials - Property of IBM
+#
+#      © IBM Corp. 2016
+
+policy: 1.0.0
+
+info:
+  title: Authy Register New User
+  name: authyregister
+  version: 1.0.0
+  description: Register a new user in Authy
+  contact:
+        name: Chris Phillips
+        email: chris.phillips@uk.ibm.com
+
+attach:
+    - rest
+    - soap
+
+properties:
+    $schema: "http://json-schema.org/draft-04/schema#"
+    type: object
+    properties:
+        apikey:
+            label: Authy API Key
+            description: API Key for working with Authy
+            type: string
+        useremail:
+            label: Users Email Address
+            description: Users email address to register
+            type: string
+        phone:
+             label: Users Phone Number
+             description: Users Phone Number to register
+             type: string
+        country:
+              label: Users Phone Number Country Code
+              description: e.g. 1 for US 44 for UK
+              type: string
+        tlsProfile:
+            label: TLS ProfileName
+            description: SSLProfile Containing the Authy SSL Certificate
+            type: string
+        timeout:
+            label: Timeout
+            description: Timeout in milliseconds
+            type: number
+            default: 100
+    required:
+      - apikey
+      - useremail
+      - phone
+      - country
+gateways:
+    - datapower-gateway

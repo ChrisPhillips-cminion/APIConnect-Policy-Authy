@@ -1,0 +1,23 @@
+sudo: required
+env:
+  matrix:
+    - policyDir="APIConnect-AuthyRegister" policyName="authyregister"
+    - policyDir="APIConnect-AuthyValidate" policyName="authytokenvalidate"
+language: node_js
+node_js:
+- '4'
+before_install:
+- mkdir tmp || true
+- mkdir out || true
+- chmod 755 ./build.sh
+script:
+- ./build.sh $policyDir $policyName
+
+deploy:
+  provider: releases
+  api_key:
+   secure: ${secure}
+  file: out/${policyName}.zip
+  skip_cleanup: true
+  on:
+    repo: ChrisPhillips-cminion/APIConnect-Policy-AssemblyLogger

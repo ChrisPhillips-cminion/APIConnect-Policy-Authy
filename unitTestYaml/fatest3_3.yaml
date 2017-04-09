@@ -1,0 +1,60 @@
+#Copyright IBM Corp. 2017. All Rights Reserved.
+#Licensed under "The MIT License (MIT)"
+swagger: '2.0'
+info:
+  x-ibm-name: fatest3
+  title: 2FATest-register
+  version: '3'
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /fatest_reg
+consumes:
+  - application/json
+produces:
+  - application/json
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - authyregister:
+          timeout: 100
+          version: 1.0.0
+          apikey: zc4DA9AatjZ3vBQviUypZyoaV1yIn5iq
+          useremail: '{email}'
+          phone: '{phone}'
+          country: '{countrycode}'
+          tlsProfile: authy
+      - invoke:
+          title: invoke
+          timeout: 60
+          verb: GET
+          cache-response: protocol
+          cache-ttl: 900
+          version: 1.0.0
+          target-url: 'https://2fasample.mybluemix.net/{email}/$(message.body.user.id)'
+  gateway: datapower-gateway
+  phase: realized
+paths:
+  /register:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+    parameters:
+      - name: email
+        type: string
+        required: false
+        in: query
+      - name: countrycode
+        type: string
+        required: false
+        in: query
+      - name: phone
+        type: string
+        required: false
+        in: query
+tags: []
