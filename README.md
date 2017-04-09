@@ -1,7 +1,3 @@
-# APIConnect-Authy
-
-![alt text](https://travis.ibm.com/ukiccte/APIConnect-Authy.svg?token=v5z65wCfSkEqhyt4PqAS "BuildStatus")
-
 # Trust Me!! I use two factor authentication!
 
 ## Introduction
