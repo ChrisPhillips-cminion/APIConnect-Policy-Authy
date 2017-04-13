@@ -1,0 +1,50 @@
+#Copyright IBM Corp. 2017. All Rights Reserved.
+#Licensed under "The MIT License (MIT)"
+policy: 1.0.0
+
+info:
+  title: Authy Validate Token
+  name: authytokenvalidate
+  version: 1.0.0
+  description: Validate a Token
+  contact:
+    name: Chris Phillips
+    email: chris.phillips@uk.ibm.com
+
+attach:
+    - rest
+    - soap
+
+properties:
+  $schema: "http://json-schema.org/draft-04/schema#"
+  type: object
+  properties:
+    apikey:
+      label: Authy API Key
+      description: API Key for working with Authy
+      type: string
+    userid:
+      label: UserID
+      description: Users Unique ID
+      type: string
+    token:
+       label: Authy Token
+       description: Token from the Authy App
+       type: string
+    tlsProfile:
+       label: TLS ProfileName
+       description: SSLProfile Containing the Authy SSL Certificate
+       type: string
+    timeout:
+       label: Timeout
+       description: Timeout in milliseconds
+       type: number
+       default: 100
+  required:
+    - apikey
+    - userid
+    - token
+    - tlsProfile
+    - timeout
+gateways:
+    - datapower-gateway
