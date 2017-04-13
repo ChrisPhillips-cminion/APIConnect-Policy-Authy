@@ -8,10 +8,11 @@ node_js:
 - '4'
 before_install:
 - mkdir tmp || true
-- mkdir out || true
+- mkdir out || true 
 - chmod 755 ./build.sh
 script:
 - ./build.sh $policyDir $policyName
+- find out
 
 deploy:
   provider: releases
